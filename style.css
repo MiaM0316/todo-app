@@ -1,0 +1,25 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+#app {
+  display: flex;
+  height: 100vh;
+}
+
+#lists-section {
+  width: 250px;
+  border-right: 1px solid #ccc;
+  padding: 1rem;
+}
+
+#tasks-section {
+  flex: 1;
+  padding: 1rem;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
