@@ -36,14 +36,30 @@ function renderLists() {
     const btn = document.createElement("button");
     btn.textContent = list.name;
 
+    const delBtn = document.createElement("button");
+    delBtn.textContent = "Löschen";
+
       btn.addEventListener("click", () => {
         state.selectedListId = list.id;
        saveState();
         renderSelectedListTitle();
         renderTasks();
-    });
+      });
+    
+    delBtn.addEventListener("click", () => {
+      state.lists = state.lists.filter(t => t.id !== list.id);
 
+      if (state.selectedListId === list.id) {
+      state.selectedListId = state.lists.length ? state.lists[0].id : null;
+      }
+      saveState();
+      renderLists();
+      renderSelectedListTitle();
+      renderTasks();
+      })
+    
     li.appendChild(btn);
+    li.appendChild(delBtn);
     listsUl.appendChild(li);
   }
 }
@@ -70,7 +86,6 @@ function renderTasks() {
     });
       
     
-
     const span = document.createElement("span");
     span.textContent = task.title;
 
@@ -119,6 +134,7 @@ addListBtn.addEventListener("click", () => {
   saveState();
   renderLists();
   renderSelectedListTitle();
+  renderTasks();
 });
 
 addTaskBtn.addEventListener("click", () => {
