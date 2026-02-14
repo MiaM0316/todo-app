@@ -16,27 +16,7 @@ function saveState() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
 }
 
-function initStateIfEmpty() {
-  // Nur wenn noch keine Daten existieren
-  if (state.lists.length === 0) {
-    const firstListId = crypto.randomUUID();
 
-    state.lists = [
-      {
-        id: firstListId,
-        name: "Uni",
-        tasks: [
-          { id: crypto.randomUUID(), title: "BA: Gliederung fertig machen", done: false },
-          { id: crypto.randomUUID(), title: "Mails beantworten", done: true }
-        ]
-        },
-    ];
-
-    state.selectedListId = firstListId;
-
-    saveState();
-  }
-}
 
 const listsUl = document.getElementById("lists");
 const tasksUl = document.getElementById("tasks");
@@ -75,23 +55,37 @@ function renderTasks() {
   if (!selected) return;
 
   for (const task of selected.tasks) {
-  const li = document.createElement("li");
+    const li = document.createElement("li");
+    li.classList.toggle("task-done", task.done);
 
-  const span = document.createElement("span");
-  span.textContent = task.title;
+    
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.checked = task.done;
+      
+    checkbox.addEventListener("change", () => {
+      task.done = checkbox.checked;
+      saveState();
+      renderTasks();
+    });
+      
+    
 
-  const delBtn = document.createElement("button");
-  delBtn.textContent = "Löschen";
+    const span = document.createElement("span");
+    span.textContent = task.title;
 
-  delBtn.addEventListener("click", () => {
-    selected.tasks = selected.tasks.filter(t => t.id !== task.id);
-    saveState();
-    renderTasks();
-  });
+    const delBtn = document.createElement("button");
+    delBtn.textContent = "Löschen";
 
-  li.appendChild(span);
-  li.appendChild(delBtn);
-  tasksUl.appendChild(li);
+    delBtn.addEventListener("click", () => {
+      selected.tasks = selected.tasks.filter(t => t.id !== task.id);
+      saveState();
+      renderTasks();
+    });
+    li.appendChild(checkbox);
+    li.appendChild(span);
+    li.appendChild(delBtn);
+    tasksUl.appendChild(li);
 }
 
 }
@@ -155,7 +149,6 @@ addTaskBtn.addEventListener("click", () => {
 
 
 loadState();
-initStateIfEmpty();
 renderLists();
 renderSelectedListTitle();
 renderTasks();
