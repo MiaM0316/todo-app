@@ -42,17 +42,27 @@ button {
 
 #add-list-btn,
 #add-task-btn {
-  background-color: #d0d0d0;
-  border: 1px solid #bdbdbd;
-  border-radius: 15px;
-  padding: 0.8rem;
-  font-size: 1.5rem;
-  font-family: Poppins;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 0.6rem 1rem;
+  font-size: 1.3rem;
+  font-family: "Poppins";
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 #add-list-btn:hover,
 #add-task-btn:hover {
-  background: #f3f4f6;
+  background: #2563eb;
+  transform: translateY(-1px);
+}
+
+#add-list-btn:active,
+#add-task-btn:active {
+  transform: translateY(0);
 }
 
 .task-done span {
