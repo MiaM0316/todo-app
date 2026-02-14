@@ -38,6 +38,8 @@ function renderLists() {
 
     const delBtn = document.createElement("button");
     delBtn.textContent = "Löschen";
+    delBtn.classList.add("delete-btn");
+
 
       btn.addEventListener("click", () => {
         state.selectedListId = list.id;
@@ -91,6 +93,8 @@ function renderTasks() {
 
     const delBtn = document.createElement("button");
     delBtn.textContent = "Löschen";
+    delBtn.classList.add("delete-btn");
+
 
     delBtn.addEventListener("click", () => {
       selected.tasks = selected.tasks.filter(t => t.id !== task.id);
