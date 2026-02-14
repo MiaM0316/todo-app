@@ -32,23 +32,22 @@ function renderLists() {
 
   for (const list of state.lists) {
     const li = document.createElement("li");
-
-    const btn = document.createElement("button");
-    btn.textContent = list.name;
+    li.textContent = list.name;
 
     const delBtn = document.createElement("button");
     delBtn.textContent = "Löschen";
     delBtn.classList.add("delete-btn");
 
 
-      btn.addEventListener("click", () => {
+      li.addEventListener("click", () => {
         state.selectedListId = list.id;
        saveState();
         renderSelectedListTitle();
         renderTasks();
       });
     
-    delBtn.addEventListener("click", () => {
+    delBtn.addEventListener("click", (event) => {
+      event.stopPropagation();
       state.lists = state.lists.filter(t => t.id !== list.id);
 
       if (state.selectedListId === list.id) {
@@ -60,7 +59,6 @@ function renderLists() {
       renderTasks();
       })
     
-    li.appendChild(btn);
     li.appendChild(delBtn);
     listsUl.appendChild(li);
   }
