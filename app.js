@@ -53,6 +53,7 @@ function renderLists() {
       if (state.selectedListId === list.id) {
       state.selectedListId = state.lists.length ? state.lists[0].id : null;
       }
+
       saveState();
       renderLists();
       renderSelectedListTitle();

@@ -32,14 +32,23 @@ ul {
   padding: 0;
 }
 
+button {
+  cursor: pointer;
+}
+
 #add-list-btn,
 #add-task-btn {
-  background-color: #bfc9d1;
+  background-color: #d0d0d0;
   border: 1px solid #bdbdbd;
   border-radius: 15px;
   padding: 0.8rem;
   font-size: 1.5rem;
   font-family: Poppins;
+}
+
+#add-list-btn:hover,
+#add-task-btn:hover {
+  background: #f3f4f6;
 }
 
 .task-done span {
@@ -66,4 +75,9 @@ ul {
   gap: 0.5rem;
   padding: 0 0.5rem;
   border-bottom: 1px solid #bdbdbd;
+  cursor: pointer;
+}
+
+#lists li:hover {
+  background: #f3f4f6;
 }
