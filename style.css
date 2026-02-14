@@ -36,6 +36,10 @@ button {
   cursor: pointer;
 }
 
+/* =========================
+   ADD-BUTTONS
+   ========================= */
+
 #add-list-btn,
 #add-task-btn {
   background-color: #d0d0d0;
@@ -56,6 +60,38 @@ button {
   opacity: 0.6;
 }
 
+/* =========================
+   DELETE BUTTONS
+   ========================= */
+
+.delete-btn {
+  margin-left: auto;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #6b7280;
+  display: flex;
+  align-items: center;
+}
+
+.delete-btn:hover {
+  color: #ef4444;
+}
+
+.delete-btn svg {
+  transition:
+    transform 0.15s ease,
+    color 0.15s;
+}
+
+.delete-btn:hover svg {
+  transform: scale(1.15);
+}
+
+/* =========================
+   TASKS
+   ========================= */
+
 #tasks li {
   background-color: white;
   border-radius: 5px;
@@ -66,6 +102,10 @@ button {
   gap: 0.5rem;
   padding: 0 0.5rem;
 }
+
+/* =========================
+   LISTS
+   ========================= */
 
 #lists li {
   margin: 0.15rem;
@@ -80,4 +120,41 @@ button {
 
 #lists li:hover {
   background: #f3f4f6;
+}
+
+/* =========================
+   CHECKBOXES
+   ========================= */
+
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+
+  width: 18px;
+  height: 18px;
+  border: 2px solid #999;
+  border-radius: 50%;
+  display: inline-grid;
+  place-content: center;
+  cursor: pointer;
+}
+
+/* wenn gecheckt */
+input[type="checkbox"]:checked {
+  border-color: #2563eb;
+}
+
+/* der „Punkt“ innen */
+input[type="checkbox"]::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  transform: scale(0);
+  background: #2563eb;
+  transition: transform 120ms ease-in-out;
+}
+
+input[type="checkbox"]:checked::before {
+  transform: scale(1);
 }
