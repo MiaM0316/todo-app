@@ -198,3 +198,20 @@ input[type="checkbox"]::before {
 input[type="checkbox"]:checked::before {
   transform: scale(1);
 }
+
+.task-input {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 1.5rem;
+  font-family: "Poppins", sans-serif;
+  background: transparent;
+}
+
+.task-input::placeholder {
+  color: var(--devider-c);
+}
+
+#tasks li:has(.task-input) {
+  border: 2px solid var(--add-button-c);
+}

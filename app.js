@@ -123,7 +123,8 @@ stroke-linecap="round" stroke-linejoin="round">
     delBtn.classList.add("delete-btn");
 
 
-    delBtn.addEventListener("click", () => {
+    delBtn.addEventListener("click", (event) => {
+      event.stopPropagation();
       selected.tasks = selected.tasks.filter(t => t.id !== task.id);
       saveState();
       renderTasks();
@@ -168,28 +169,68 @@ addListBtn.addEventListener("click", () => {
   renderTasks();
 });
 
-addTaskBtn.addEventListener("click", () => {
+addTaskBtn.addEventListener("click", showTaskInput);
+
+function showTaskInput() {
+  if (document.querySelector(".task-input")) return;
   const selected = state.lists.find(l => l.id === state.selectedListId);
   if (!selected) {
     alert("Bitte zuerst eine Liste auswählen.");
     return;
   }
 
-  const title = prompt("Neue Aufgabe:");
-  if (!title) return;
+  const li = document.createElement("li");
+  const input = document.createElement("input");
 
-  const trimmed = title.trim();
-  if (!trimmed) return;
+  input.type = "text";
+  input.placeholder = "Neue Aufgabe...";
+  input.classList.add("task-input");
+
+  li.appendChild(input);
+  tasksUl.appendChild(li);
+
+  input.focus();
+
+  let saved = false;
+  let cancelled = false;
+
+function saveIfNeeded() {
+  if (saved) return;
+
+  const value = input.value.trim();
+  if (!value) return;
 
   selected.tasks.push({
     id: crypto.randomUUID(),
-    title: trimmed,
+    title: value,
     done: false
   });
 
   saveState();
+  saved = true;
+}
+
+input.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    saveIfNeeded();
+    renderTasks();
+  }
+  else if (e.key === "Escape") {
+    cancelled = true;
+    renderTasks();
+  }
+});
+
+  input.addEventListener("blur", () => {
+    if (cancelled) return;
+  saveIfNeeded();
   renderTasks();
 });
+
+}
+
+
+
 
 
 
