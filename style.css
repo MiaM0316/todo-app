@@ -181,7 +181,7 @@ input[type="checkbox"] {
 
 /* wenn gecheckt */
 input[type="checkbox"]:checked {
-  border-color: #2563eb;
+  border-color: var(--add-button-hover-c);
 }
 
 /* der „Punkt“ innen */
@@ -191,7 +191,7 @@ input[type="checkbox"]::before {
   height: 10px;
   border-radius: 50%;
   transform: scale(0);
-  background: #2563eb;
+  background: var(--add-button-hover-c);
   transition: transform 120ms ease-in-out;
 }
 

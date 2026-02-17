@@ -97,6 +97,12 @@ function renderTasks() {
       saveState();
       renderTasks();
     });
+
+    li.addEventListener("click", () => {
+      task.done = !task.done;
+      saveState();
+      renderTasks();
+      });
       
     
     const span = document.createElement("span");
