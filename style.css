@@ -1,3 +1,12 @@
+:root {
+  --add-button-c: #3b82f6;
+  --add-button-hover-c: #2563eb;
+  --list-section-c: #ffffff;
+  --task-section-c: #eaefef;
+  --tasks-c: #ffffff;
+  --devider-c: #bdbdbd;
+}
+
 body {
   margin: 0;
   font-family: "Poppins", sans-serif;
@@ -6,7 +15,7 @@ body {
 
 h2 {
   font-size: 3rem;
-  border-bottom: 1px solid #bdbdbd;
+  border-bottom: 1px solid var(--devider-c);
 }
 
 #app {
@@ -16,7 +25,7 @@ h2 {
 
 #listsection {
   width: 250px;
-  border-right: 1px solid #bdbdbd;
+  border-right: 1px solid var(--list-section-c);
   padding: 2rem;
   background-color: white;
 }
@@ -24,7 +33,7 @@ h2 {
 #tasks-section {
   flex: 1;
   padding: 2rem;
-  background-color: #eaefef;
+  background-color: var(--task-section-c);
 }
 
 ul {
@@ -44,11 +53,12 @@ button {
 
 #add-list-btn,
 #add-task-btn {
-  background: #3b82f6;
+  background: var(--add-button-c);
   color: white;
   border: none;
   border-radius: 10px;
   padding: 0.6rem 1rem;
+  margin: 1rem 0 1.5rem 0;
   font-size: 1.3rem;
   font-family: "Poppins", sans-serif;
   font-weight: 500;
@@ -58,7 +68,7 @@ button {
 
 #add-list-btn:hover,
 #add-task-btn:hover {
-  background: #2563eb;
+  background: var(--add-button-hover-c);
   transform: translateY(-1px);
 }
 
@@ -81,7 +91,7 @@ button {
   background: none;
   border: none;
   cursor: pointer;
-  color: #6b7280;
+  color: var(--devider-c);
   display: flex;
   align-items: center;
 }
@@ -105,7 +115,7 @@ button {
    ========================= */
 
 #tasks li {
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--tasks-c);
   border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: 10px;
   padding: 0.75rem 0.75rem;
@@ -138,12 +148,18 @@ button {
   align-items: center;
   gap: 0.5rem;
   padding: 0 0.5rem;
-  border-bottom: 1px solid #bdbdbd;
+  border-radius: 10px;
   cursor: pointer;
+  transition:
+    transform 120ms ease,
+    box-shadow 120ms ease,
+    border-color 120ms ease;
 }
 
 #lists li:hover {
-  background: #f3f4f6;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  border-color: rgba(0, 0, 0, 0.12);
 }
 
 /* =========================
@@ -156,7 +172,7 @@ input[type="checkbox"] {
 
   width: 18px;
   height: 18px;
-  border: 2px solid #999;
+  border: 2px solid var(--devider-c);
   border-radius: 50%;
   display: inline-grid;
   place-content: center;
