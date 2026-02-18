@@ -199,7 +199,12 @@ input[type="checkbox"]:checked::before {
   transform: scale(1);
 }
 
-.task-input {
+/* =========================
+   Inputs
+   ========================= */
+
+.task-input,
+.list-input {
   width: 100%;
   border: none;
   outline: none;
