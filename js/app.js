@@ -3,31 +3,14 @@ import { loadState, saveState } from "./storage.js";
 import { renderTasks } from "./tasks.js";
 import { renderLists } from "./lists.js";
 
+import "./addLists.js"
+
 
 
 const tasksUl = document.getElementById("tasks");
 
-
-const addListBtn = document.getElementById("add-list-btn");
 const addTaskBtn = document.getElementById("add-task-btn");
 
-
-addListBtn.addEventListener("click", () => {
-  const name = prompt("Name der neuen Liste:");
-  if (!name) return;
-
-  const newList = {
-    id: crypto.randomUUID(),
-    name: name.trim(),
-    tasks: []
-  };
-
-  state.lists.push(newList);
-  state.selectedListId = newList.id;
-
-  saveState();
-  renderLists();
-});
 
 addTaskBtn.addEventListener("click", showTaskInput);
 
