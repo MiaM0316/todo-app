@@ -1,11 +1,12 @@
 import { state } from "./state.js";
 import { loadState, saveState } from "./storage.js";
+import { renderSelectedListTitle } from "./listTitel.js";
 
 
 
 const listsUl = document.getElementById("lists");
 const tasksUl = document.getElementById("tasks");
-const currentListTitle = document.getElementById("current-list-title");
+
 
 const addListBtn = document.getElementById("add-list-btn");
 const addTaskBtn = document.getElementById("add-task-btn");
@@ -123,16 +124,7 @@ stroke-linecap="round" stroke-linejoin="round">
 }
 
 
-function renderSelectedListTitle() {
-  const selected = state.lists.find(l => l.id === state.selectedListId);
 
-  if (!selected) {
-    currentListTitle.textContent = "Keine Liste ausgewählt";
-    return;
-  }
-
-  currentListTitle.textContent = selected.name;
-}
 
 
 addListBtn.addEventListener("click", () => {
@@ -225,6 +217,3 @@ loadState();
 renderLists();
 renderSelectedListTitle();
 renderTasks();
-
-
-console.log("Geladener State:", state);
