@@ -213,10 +213,15 @@ input[type="checkbox"]:checked::before {
   background: transparent;
 }
 
-.task-input::placeholder {
+.task-input::placeholder,
+.list-input::placeholder {
   color: var(--devider-c);
 }
 
 #tasks li:has(.task-input) {
+  border: 2px solid var(--add-button-c);
+}
+
+#lists li:has(.list-input) {
   border: 2px solid var(--add-button-c);
 }
