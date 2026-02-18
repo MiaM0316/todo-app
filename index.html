@@ -8,12 +8,20 @@
     <body>
         <div id="app">
             <aside id="listsection">
-                <h2 id="Listen-header">Listen</h2>
+                <div class="tasks-header">
+                    <h2 id="Listen-header">Listen</h2>
+                </div>
                 <button id="add-list-btn">+ Neue Liste</button>
                 <ul id="lists"></ul>
             </aside>
             <main id="tasks-section">
-                <h2 id="current-list-title">Keine Liste ausgewählt</h2>
+                <div class="tasks-header">
+                    <h2 id="current-list-title">Keine Liste ausgewählt</h2>
+                    <label class="theme-switch">
+                        <input type="checkbox" id="theme-toggle">
+                        <span class="slider"></span>
+                    </label>
+                </div>
                 <button id="add-task-btn">+ Neue Aufgabe</button>
                 <ul id="tasks"></ul>
             </main>

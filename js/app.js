@@ -3,6 +3,7 @@ import { renderLists } from "./lists.js";
 
 import "./addLists.js"
 import "./addTasks.js"
+import "./darkmode.js"
 
 
 loadState();
