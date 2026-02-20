@@ -108,7 +108,6 @@ button {
    ========================= */
 
 .delete-btn {
-  margin-left: auto;
   background: none;
   border: none;
   cursor: pointer;
@@ -128,6 +127,34 @@ button {
 }
 
 .delete-btn:hover svg {
+  transform: scale(1.15);
+}
+
+/* =========================
+   EDIT BUTTONS
+   ========================= */
+
+.edit-btn {
+  margin-left: auto;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--devider-c);
+  display: flex;
+  align-items: center;
+}
+
+.edit-btn:hover {
+  color: #ef4444;
+}
+
+.edit-btn svg {
+  transition:
+    transform 0.15s ease,
+    color 0.15s;
+}
+
+.edit-btn:hover svg {
   transform: scale(1.15);
 }
 
