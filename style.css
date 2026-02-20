@@ -5,12 +5,27 @@
   --task-section-c: #9cd5ff;
   --tasks-c: #f7f8f0;
   --devider-c: #355872;
+  --text-c: #000000;
+}
+
+body.dark {
+  --add-button-c: #4f8fbf;
+  --add-button-hover-c: #7bb6e3;
+
+  --list-section-c: #1e2933;
+  --task-section-c: #0f1720;
+
+  --tasks-c: #27313b;
+
+  --devider-c: #3b82b6;
+  --text-c: #e5e7eb;
 }
 
 body {
   margin: 0;
   font-family: "Poppins", sans-serif;
   font-size: 1.5rem;
+  color: var(--text-c);
 }
 
 h2 {
@@ -26,7 +41,7 @@ h2 {
   width: 250px;
   border-right: 1px solid var(--devider-c);
   padding: 2rem;
-  background-color: white;
+  background-color: var(--list-section-c);
 }
 
 #tasks-section {
@@ -156,6 +171,7 @@ button {
   padding: 0 0.5rem;
   border-radius: 10px;
   cursor: pointer;
+  background: var(--task-section-c);
   transition:
     transform 120ms ease,
     box-shadow 120ms ease,
@@ -217,11 +233,12 @@ input[type="checkbox"]:checked::before {
   font-size: 1.5rem;
   font-family: "Poppins", sans-serif;
   background: transparent;
+  color: var(--text-c);
 }
 
 .task-input::placeholder,
 .list-input::placeholder {
-  color: var(--devider-c);
+  color: var(--text-c);
 }
 
 #tasks li:has(.task-input) {
