@@ -195,7 +195,7 @@ button {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0 0.5rem;
+  padding: 0 1rem;
   border-radius: 10px;
   cursor: pointer;
   background: var(--task-section-c);
