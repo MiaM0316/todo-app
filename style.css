@@ -1,10 +1,10 @@
 :root {
-  --add-button-c: #3b82f6;
-  --add-button-hover-c: #2563eb;
-  --list-section-c: #ffffff;
-  --task-section-c: #eaefef;
-  --tasks-c: #ffffff;
-  --devider-c: #bdbdbd;
+  --add-button-c: #7aaace;
+  --add-button-hover-c: #355872;
+  --list-section-c: #f7f8f0;
+  --task-section-c: #9cd5ff;
+  --tasks-c: #f7f8f0;
+  --devider-c: #355872;
 }
 
 body {
@@ -24,7 +24,7 @@ h2 {
 
 #listsection {
   width: 250px;
-  border-right: 1px solid var(--list-section-c);
+  border-right: 1px solid var(--devider-c);
   padding: 2rem;
   background-color: white;
 }
@@ -225,11 +225,11 @@ input[type="checkbox"]:checked::before {
 }
 
 #tasks li:has(.task-input) {
-  border: 2px solid var(--add-button-c);
+  border: 2px solid var(--devider-c);
 }
 
 #lists li:has(.list-input) {
-  border: 2px solid var(--add-button-c);
+  border: 2px solid var(--devider-c);
 }
 
 /* =========================
@@ -251,7 +251,7 @@ input[type="checkbox"]:checked::before {
 .slider {
   position: absolute;
   inset: 0;
-  background-color: #ccc;
+  background-color: var(--add-button-c);
   border-radius: 34px;
   transition: 0.25s;
   cursor: pointer;
