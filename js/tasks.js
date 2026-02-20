@@ -31,8 +31,9 @@ export function renderTasks() {
       });
       
     
-    const span = document.createElement("span");
-    span.textContent = task.title;
+    const nameSpan = document.createElement("span");
+    nameSpan.classList.add("list-name");
+    nameSpan.textContent = task.title;
 
     const editBtn = document.createElement("button");
     editBtn.innerHTML = `
@@ -44,6 +45,57 @@ export function renderTasks() {
     </svg>
     `;
     editBtn.classList.add("edit-btn");
+
+    editBtn.addEventListener("click", (event) => {
+      event.stopPropagation();
+
+      if (li.querySelector(".list-input")) return;
+
+      const nameSpan = li.querySelector(".list-name");
+      nameSpan.style.display = "none";
+      
+      const input = document.createElement("input");
+      input.type = "text";
+      input.value = task.title;
+      input.classList.add("list-input");
+
+      nameSpan.insertAdjacentElement("afterend", input);
+
+      input.focus();
+      input.select();
+      
+      let saved = false;
+      let cancelled = false;
+
+      function saveIfNeeded() {
+      if (saved) return;
+
+      const value = input.value.trim();
+      if (!value) return;
+
+      task.title = value.trim();
+
+      saveState();
+      saved = true;
+      }
+
+      input.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+        saveIfNeeded();
+        renderTasks();
+      }
+      else if (e.key === "Escape") {
+        cancelled = true;
+        renderTasks();
+      }
+      });
+
+      input.addEventListener("blur", () => {
+        if (cancelled) return;
+        saveIfNeeded();
+        renderTasks();
+      });
+    });
 
     const delBtn = document.createElement("button");
     delBtn.innerHTML = `
@@ -59,7 +111,6 @@ export function renderTasks() {
     `;
     delBtn.classList.add("delete-btn");
 
-
     delBtn.addEventListener("click", (event) => {
       event.stopPropagation();
       selected.tasks = selected.tasks.filter(t => t.id !== task.id);
@@ -67,7 +118,7 @@ export function renderTasks() {
       renderTasks();
     });
     li.appendChild(checkbox);
-    li.appendChild(span);
+    li.appendChild(nameSpan);
     li.appendChild(editBtn);
     li.appendChild(delBtn);
     tasksUl.appendChild(li);

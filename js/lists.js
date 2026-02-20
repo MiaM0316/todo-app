@@ -10,7 +10,17 @@ export function renderLists() {
 
   for (const list of state.lists) {
     const li = document.createElement("li");
-    li.textContent = list.name;
+
+    const nameSpan = document.createElement("span");
+    nameSpan.classList.add("list-name");
+    nameSpan.textContent = list.name;
+
+    li.addEventListener("click", () => {
+        state.selectedListId = list.id;
+       saveState();
+        renderSelectedListTitle();
+        renderTasks();
+      });
 
     const editBtn = document.createElement("button");
     editBtn.innerHTML = `
@@ -22,6 +32,57 @@ export function renderLists() {
     </svg>
     `;
     editBtn.classList.add("edit-btn");
+
+    editBtn.addEventListener("click", (event) => {
+      event.stopPropagation();
+
+      if (li.querySelector(".list-input")) return;
+
+      const nameSpan = li.querySelector(".list-name");
+      nameSpan.style.display = "none";
+      
+      const input = document.createElement("input");
+      input.type = "text";
+      input.value = list.name;
+      input.classList.add("list-input");
+
+      nameSpan.insertAdjacentElement("afterend", input);
+
+      input.focus();
+      input.select();
+      
+      let saved = false;
+      let cancelled = false;
+
+      function saveIfNeeded() {
+      if (saved) return;
+
+      const value = input.value.trim();
+      if (!value) return;
+
+      list.name = value.trim();
+
+      saveState();
+      saved = true;
+      }
+
+      input.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+        saveIfNeeded();
+        renderLists();
+      }
+      else if (e.key === "Escape") {
+        cancelled = true;
+        renderLists();
+      }
+      });
+      
+      input.addEventListener("blur", () => {
+        if (cancelled) return;
+        saveIfNeeded();
+        renderLists();
+      });
+    });
 
     const delBtn = document.createElement("button");
     delBtn.innerHTML = `
@@ -37,14 +98,6 @@ export function renderLists() {
     `;
     delBtn.classList.add("delete-btn");
 
-
-      li.addEventListener("click", () => {
-        state.selectedListId = list.id;
-       saveState();
-        renderSelectedListTitle();
-        renderTasks();
-      });
-    
     delBtn.addEventListener("click", (event) => {
       event.stopPropagation();
       state.lists = state.lists.filter(t => t.id !== list.id);
@@ -57,7 +110,9 @@ export function renderLists() {
       renderLists();
       renderSelectedListTitle();
       renderTasks();
-      })
+    })
+    
+    li.appendChild(nameSpan);
     li.appendChild(editBtn);
     li.appendChild(delBtn);
     listsUl.appendChild(li);
