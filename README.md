@@ -1,69 +1,87 @@
 # 📝 Todo App
 
-Eine moderne, modulare Todo App mit Listenverwaltung und Dark Mode.
+A modern, modular Todo application with multi-list management and persistent dark mode.
+
+Built with Vanilla JavaScript (ES Modules) and structured with a clean, modular architecture.
+
+---
 
 ## 🚀 Features
 
-### 📂 Listenverwaltung
+### 📂 List Management
 
-- Erstellen neuer Listen
-- Inline-Bearbeitung von Listennamen
-- Löschen von Listen
-- Auswahl aktiver Liste
+- Create new lists
+- Inline editing of list names
+- Delete lists
+- Select active list
 
 ### ✅ Task Management
 
-- Tasks zu einer Liste hinzufügen (Inline-Input)
-- Tasks abhaken (Toggle Done/Undone)
-- Tasks bearbeiten (Inline Editing)
-- Tasks löschen
+- Add tasks to a specific list (inline input)
+- Toggle tasks (done / undone)
+- Inline editing of tasks
+- Delete tasks
 
 ### 🌙 Dark Mode
 
-- Toggle-Switch oben rechts
-- Speicherung der Theme-Einstellung im LocalStorage
-- Persistenter Dark Mode nach Reload
+- Toggle switch (top right)
+- Theme stored in LocalStorage
+- Persistent theme after reload
 
 ---
 
-## 🛠️ Technologien
+## 🛠️ Tech Stack
 
 - Vanilla JavaScript (ES Modules)
-- HTML
-- CSS
-- LocalStorage für Persistenz
-- Modulare Dateistruktur
+- HTML5
+- CSS3
+- LocalStorage (for persistence)
 
 ---
 
-## 🧠 Technische Highlights
+## 🧠 Technical Highlights
 
-- Modulare Architektur
-- Saubere Trennung von State-Management und UI
-- Dynamisches DOM Rendering
-- Event Handling mit `stopPropagation`
-- Inline Editing mit `keydown` und `blur`
-- Guard-Logik gegen doppelte Speicherung
-- Dark Mode via CSS Custom Properties
-
----
-
-## 💡 Mögliche Erweiterungen
-
-- Drag & Drop Sortierung
-- Task-Prioritäten
-- Due Dates
-- Filter (Alle / Offen / Erledigt)
-- Animationen beim Hinzufügen/Löschen
-- Backend-Anbindung
+- Modular file structure
+- Clear separation of state management and UI logic
+- Dynamic DOM rendering
+- Event handling with `stopPropagation`
+- Inline editing via `keydown` and `blur`
+- Guard logic to prevent duplicate state updates
+- Dark Mode implemented using CSS Custom Properties
 
 ---
 
-## 🧑‍💻 Autor
+## 📸 Screenshots
 
-Erstellt im Rahmen meines Informatikstudiums als Praxisprojekt zur Vertiefung von:
+### Light View
 
-- DOM-Manipulation
-- State Management
-- Modulare JavaScript-Architektur
-- UI/UX Grundlagen
+<p align="center">
+  <img src="assets/todo-lightmode.png" width="750">
+</p>
+
+### Dark Mode
+
+<p align="center">
+  <img src="assets/todo-darkmode.png" width="750">
+</p>
+
+---
+
+## 💡 Possible Extensions
+
+- Drag & Drop sorting
+- Task priorities
+- Due dates
+- Filtering (All / Active / Completed)
+- Animations
+- Backend integration
+
+---
+
+## ▶️ Run Locally
+
+Clone the repository:
+
+```bash
+git clone https://github.com/MiaM0316/todoapp.git
+```
