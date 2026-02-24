@@ -4,6 +4,9 @@ A modern, modular Todo application with multi-list management and persistent dar
 
 Built with Vanilla JavaScript (ES Modules) and structured with a clean, modular architecture.
 
+## 🌐 Live Demo
+👉 https://miam0316.github.io/todo-app/
+
 ---
 
 ## 🚀 Features
